@@ -1,8 +1,4 @@
-/* @import "tailwindcss"; */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+/* Custom styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -30,6 +26,7 @@
 .App .routes > main > * {
   flex-grow: 1;
 }
+
 .App nav + div {
   flex: 1;
 }
