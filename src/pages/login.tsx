@@ -1,3 +1,4 @@
+import { Input } from 'components/ui/input';
 import React from 'react';
 
 export default function Login() {
@@ -10,6 +11,10 @@ export default function Login() {
         <p className="mt-4 text-gray-700">
           Por favor, insira suas informações.
         </p>
+
+        <Input type="email" placeholder="Email" />
+
+        <Input type="password" placeholder='******' />
       </div>
     </main>
   );
