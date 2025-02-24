@@ -1,6 +1,6 @@
 ## Login básico
 
-Este projeto é um estudo do funcionamento de um sistema de login tradicional JWT e utilizando estilização com Tailwind e para componentes Shadcn.
+Este projeto é um estudo do funcionamento de um sistema de login tradicional JWT e utilizando estilização com Tailwind e para componentes Shadcn, configurado manualmente para usar React sem framework.
 
 ## 🔨 Ferramentas usadas:
 
