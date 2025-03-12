@@ -56,6 +56,10 @@ nav {
   gap: 8px;
 }
 
+label {
+  text-align: left;
+}
+
 footer {
   background-color: #f8f9fa;
   text-align: center;
