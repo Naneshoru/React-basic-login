@@ -1,9 +1,10 @@
+import AccountContext from 'contexts/account-context';
 import { Button } from 'components/ui/button';
 import { Input } from 'components/ui/input';
-import React, { FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { FormEvent, useContext, useState } from 'react';
 
 export default function SignUp() {
+  const { register } = useContext(AccountContext)
   const [credentials, setCredentials] = useState({
     name: '',
     email: '',
@@ -16,28 +17,10 @@ export default function SignUp() {
     setCredentials((prev) => ({ ...prev, [name]: value }))
   }
 
-  const navigate = useNavigate()
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    try {
-      const register = async () => {
-        const response = await fetch('http://localhost:3030/api/register', {
-          method: 'POST',
-          body: JSON.stringify(credentials),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-        const data = await response.json()
-        return data
-      }
-      register().then((data) => {
-        alert(data)
-        navigate('/')
-      })
-    } catch (error) {
-      alert(error)
-    }
+  
+    register(credentials).catch((err: any) => alert(err))
   }
 
   return (
@@ -74,3 +57,4 @@ export default function SignUp() {
     </main>
   );
 }
+

@@ -6,7 +6,8 @@
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/ui/*": ["components/ui/*"]
+      "@/ui/*": ["components/ui/*"],
+      "@/contexts/*": ["contexts/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

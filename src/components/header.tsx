@@ -1,19 +1,9 @@
-import { jwtDecode } from 'jwt-decode'
-import React, { useEffect, useMemo, useState } from 'react'
+import AccountContext from 'contexts/account-context'
+import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function Header() {
-  const token = useMemo(() => localStorage.getItem('token'), [])
-  const [isExpired, setIsExpired] = useState<boolean>(true)
-  
-  useEffect(() => {
-    if (token) {
-      const decoded = jwtDecode(token)
-      if (decoded.exp) {
-        setIsExpired(decoded.exp * 1000 < Date.now())
-      }
-    }
-  }, [setIsExpired, token])
+  const { isLoggedIn } = useContext(AccountContext)
 
   const navigate = useNavigate()
   const onExit = () => {
@@ -27,7 +17,7 @@ export default function Header() {
         <Link to={'/'}>
             Início |
         </Link>
-        {!token || isExpired ? <>
+        {!isLoggedIn ? <>
           <Link to={'/signup'}>Crie a sua conta |</Link> 
           <Link to={'/login'}>Entre |</Link>
         </> : <p onClick={onExit} className='cursor-pointer'>Sair |</p>

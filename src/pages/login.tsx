@@ -1,9 +1,11 @@
+import AccountContext from 'contexts/account-context';
 import { Button } from 'components/ui/button';
 import { Input } from 'components/ui/input';
-import React, { FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { FormEvent, useContext, useState } from 'react';
 
 export default function Login() {
+  const { login } = useContext(AccountContext)
+
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -15,28 +17,10 @@ export default function Login() {
     setCredentials((prev) => ({ ...prev, [name]: value }))
   }
 
-  const navigate = useNavigate()
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    try {
-      const login = async () => {
-        const response = await fetch('http://localhost:3030/api/login', {
-          method: 'POST',
-          body: JSON.stringify(credentials),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-
-        if (response.ok) {
-          const { token } = await response.json()
-          localStorage.setItem('token', token)
-        }
-      }
-      login().then(() => navigate('/'))
-    } catch (error) {
-      alert(error)
-    }
+   
+    login(credentials).catch(err => alert(err))
   }
 
   return (
