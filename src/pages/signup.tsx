@@ -26,7 +26,7 @@ export default function SignUp() {
   return (
     <main>
       <div className="flex justify-center grow p-6 bg-blue-50">
-        <div className="w-96 bg-blue-100 p-6">
+        <div className="w-96 bg-blue-100 p-6 rounded-xl">
           <h1 className="text-3xl font-bold text-blue-800">
             Cadastro de usuário
           </h1>
@@ -37,12 +37,12 @@ export default function SignUp() {
           <form action="" className='flex flex-col gap-2 p-2' onSubmit={handleSubmit}>
             <label className='flex flex-col gap-1'>
               Nome: 
-              <Input name="name" placeholder="José da Silva" value={credentials.name} onChange={handleChange} className='bg-gray-50' />
+              <Input name="name" placeholder="José da Silva" value={credentials.name} onChange={handleChange} className='bg-gray-50' autoComplete="name" />
             </label>
 
             <label className='flex flex-col gap-1'>
               E-mail: 
-              <Input type="email" name="email" placeholder="email@provedor.com.br" value={credentials.email} onChange={handleChange} className='bg-gray-50' />
+              <Input type="email" name="email" placeholder="email@provedor.com.br" value={credentials.email} onChange={handleChange} className='bg-gray-50'autoComplete="email" />
             </label>
 
             <label className='flex flex-col gap-1'>

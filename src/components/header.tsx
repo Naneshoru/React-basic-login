@@ -3,10 +3,11 @@ import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function Header() {
-  const { isLoggedIn } = useContext(AccountContext)
+  const { isLoggedIn, setIsLoggedIn } = useContext(AccountContext)
 
   const navigate = useNavigate()
   const onExit = () => {
+    setIsLoggedIn(false)
     localStorage.removeItem('refreshToken')
     navigate('/login')
   }

@@ -26,7 +26,7 @@ export default function Login() {
   return (
     <main>
       <div className="flex justify-center grow p-6 bg-blue-50">
-        <div className="w-96 bg-blue-100 p-6">
+        <div className="w-96 bg-blue-100 p-6 rounded-xl">
           <h1 className="text-3xl font-bold text-blue-800">
             Faça o login
           </h1>
@@ -37,7 +37,7 @@ export default function Login() {
           <form action="" className='flex flex-col gap-2 p-2' onSubmit={handleSubmit}>
             <label className='flex flex-col gap-1'>
               E-mail: 
-              <Input type="email" name="email" placeholder="email@provedor.com.br" value={credentials.email} onChange={handleChange} className='bg-gray-50' />
+              <Input type="email" name="email" placeholder="email@provedor.com.br" value={credentials.email} onChange={handleChange} className='bg-gray-50' autoComplete="email" />
             </label>
 
             <label className='flex flex-col gap-1'>
