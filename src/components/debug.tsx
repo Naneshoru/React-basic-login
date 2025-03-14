@@ -16,8 +16,6 @@ function Debug ({ value, lowOpacity, children }: Props): any {
     elem.style.right = '30px'
   }
 
-  // const [render, setRender] = useState<any>(false)
-
   return (
     <div className='debug custom-scroll'
       style={{
@@ -31,8 +29,6 @@ function Debug ({ value, lowOpacity, children }: Props): any {
         opacity: lowOpacity ? 0.6 : 1
       }}
     >
-      {/* <button onClick={(() => { setRender((prev: boolean) => !prev) })}>Update</button> */}
-      {/* &nbsp; {JSON.stringify(render, null, 2)} */}
       <pre>
         {JSON.stringify(valueLocal, null, 2)}
         <br></br>

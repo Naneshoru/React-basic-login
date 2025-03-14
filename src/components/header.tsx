@@ -7,7 +7,7 @@ export default function Header() {
 
   const navigate = useNavigate()
   const onExit = () => {
-    localStorage.removeItem('token')
+    localStorage.removeItem('refreshToken')
     navigate('/login')
   }
 

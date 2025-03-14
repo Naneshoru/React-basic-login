@@ -7,6 +7,7 @@ import Dashboard from './pages/dashboard';
 import Header from './components/header';
 import Footer from './components/footer';
 import AccountProvider from './providers/account-provider';
+import PrivateRoute from './components/private-route';
 
 function App() {
   return (
@@ -19,7 +20,11 @@ function App() {
               <Route path='/' element={<Initial />}  />
               <Route path='/signup' element={<SignUp />}  />
               <Route path='/login' element={<Login />}  />
-              <Route path='/dashboard' element={<Dashboard />}  />
+              <Route path='/dashboard' element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>}
+              />
             </Routes>
           </div>
           <Footer />
