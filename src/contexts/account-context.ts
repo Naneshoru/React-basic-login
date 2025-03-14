@@ -7,7 +7,8 @@ type AccountContextProps = {
   isLoggedIn: boolean
   setIsLoggedIn: (loggedIn: boolean) => void
   token: string
-  // refreshTheToken: () => void
+  refreshTheToken: (refreshToken: string) => void
+  isLoading: boolean
 }
 
 const defaultValues: AccountContextProps = {
@@ -19,8 +20,9 @@ const defaultValues: AccountContextProps = {
   register: async () => ({ message: 'Usuário criado com sucesso!' }),
   isLoggedIn: true,
   setIsLoggedIn: () => {},
-  token: ''
-  // refreshTheToken: async () => {}
+  token: '',
+  refreshTheToken: async () => {},
+  isLoading: false
 };
 
 const AccountContext = createContext<AccountContextProps>(defaultValues);

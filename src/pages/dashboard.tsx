@@ -1,20 +1,21 @@
+import { customFetch } from 'utils'
 import AccountContext from 'contexts/account-context'
 import React, { useContext, useEffect, useState } from 'react'
 
 export default function Dashboard() {
-  const { token } = useContext(AccountContext)
+  const { token, refreshTheToken, isLoading
+   } = useContext(AccountContext)
   const [users, setUsers] = useState<{ name: string, email: string }[]>([])
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        if (token) {
-          console.log(token)
-          const response = await fetch('http://localhost:3030/api/users', {
+        if (token && !isLoading) {
+          const response = await customFetch('http://localhost:3030/api/users', {
             headers: {
               Authorization: `Bearer ${token}`
             }
-          })
+          }, refreshTheToken)
           if (response.ok) {
             const data = await response.json()
             return data
@@ -27,7 +28,7 @@ export default function Dashboard() {
       }
     }
     fetchUsers().then(data => setUsers(data))
-  }, [token])
+  }, [token, refreshTheToken, isLoading])
 
   return (
     <main className='text-center'>{users.flatMap(u => 
