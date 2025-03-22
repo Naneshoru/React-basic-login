@@ -39,7 +39,7 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
   }, [refreshTheToken])
 
   const login = async (credentials: { email: string; password: string }): Promise<any> => {
-    const response = await fetch("http://localhost:3030/api/login", {
+    const response = await fetch("http://localhost:3030/api/auth/login", {
       method: "POST",
       body: JSON.stringify(credentials),
       headers: {
@@ -62,7 +62,7 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
   };
 
   const register = async (credentials: { name: string, email: string; password: string }) => {
-    const response = await fetch('http://localhost:3030/api/register', {
+    const response = await fetch('http://localhost:3030/api/users', {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: {
