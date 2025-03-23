@@ -15,7 +15,7 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
   
   const refreshTheToken = useCallback(async (refreshToken: string) => {
     setIsLoading(true)
-    const response = await fetch('http://localhost:3030/api/refresh', {
+    const response = await fetch('http://localhost:3030/api/auth/refresh', {
       method: 'POST',
       body: JSON.stringify({ refreshToken }),
       headers: {
@@ -29,6 +29,7 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
       localStorage.setItem("refreshToken", refreshToken);
       return { token, refreshToken }
     }
+    return { token: '', refreshToken: '' }
   }, [])
 
   useEffect(() => {
@@ -84,7 +85,7 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
  
   return (
     <AccountContext.Provider 
-      value={{ login, register, getAccount, isLoggedIn, setIsLoggedIn, isLoading, token, refreshTheToken }}
+      value={{ login, register, getAccount, isLoggedIn, setIsLoggedIn, isLoading, token, setToken, refreshTheToken }}
     >
       {children}
     </AccountContext.Provider>

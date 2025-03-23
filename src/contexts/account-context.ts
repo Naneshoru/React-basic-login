@@ -7,7 +7,8 @@ type AccountContextProps = {
   isLoggedIn: boolean
   setIsLoggedIn: (loggedIn: boolean) => void
   token: string
-  refreshTheToken: (refreshToken: string) => void
+  setToken: (token: string) => void
+  refreshTheToken: (refreshToken: string) => Promise<{ token: string, refreshToken: string }>
   isLoading: boolean
 }
 
@@ -21,7 +22,11 @@ const defaultValues: AccountContextProps = {
   isLoggedIn: true,
   setIsLoggedIn: () => {},
   token: '',
-  refreshTheToken: async () => {},
+  setToken: () => {},
+  refreshTheToken: async () => ({
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    refreshToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  }),
   isLoading: false
 };
 
