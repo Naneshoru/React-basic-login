@@ -27,11 +27,11 @@ export default function Dashboard() {
       }
     }
     fetchUsers().then(data => setUsers(data))
-  }, [token, refreshTheToken])
+  }, [token, refreshTheToken, setToken])
 
   return (
-    <main className='text-center flex-col'>{users.flatMap(u => 
-      u.name != null ? <p>{`${u.name} - ${u.email}`}</p> : <></>)}
+    <main className='text-center flex-col'>{users.flatMap((u, key) => 
+      u.name != null ? <p key={key}>{`${u.name} - ${u.email}`}</p> : <></>)}
     </main>
   )
 }

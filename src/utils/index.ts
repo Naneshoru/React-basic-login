@@ -8,7 +8,7 @@ const customFetch = async (url: string, options: RequestInit = {}, refreshTheTok
       const result = await refreshTheToken(refreshToken);
 
       if (result) {
-        const token = (result as any).token;
+        const token = result.token;
         setToken(token)
         localStorage.setItem("refreshToken", result.refreshToken);
   
