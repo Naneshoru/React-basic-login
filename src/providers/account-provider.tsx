@@ -15,7 +15,7 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
   
   const refreshTheToken = useCallback(async (refreshToken: string) => {
     setIsLoading(true)
-    const response = await fetch('http://localhost:3030/api/auth/refresh', {
+    const response = await fetch(`/api/auth/refresh`, {
       method: 'POST',
       body: JSON.stringify({ refreshToken }),
       headers: {
@@ -40,7 +40,7 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
   }, [refreshTheToken])
 
   const login = async (credentials: { email: string; password: string }): Promise<any> => {
-    const response = await fetch("http://localhost:3030/api/auth/login", {
+    const response = await fetch(`/api/auth/login`, {
       method: "POST",
       body: JSON.stringify(credentials),
       headers: {
@@ -63,7 +63,7 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
   };
 
   const register = async (credentials: { name: string, email: string; password: string }) => {
-    const response = await fetch('http://localhost:3030/api/users', {
+    const response = await fetch(`/api/users`, {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: {

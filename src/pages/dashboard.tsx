@@ -10,7 +10,7 @@ export default function Dashboard() {
     const fetchUsers = async () => {
       try {
         if (token) {
-          const response = await customFetch('http://localhost:3030/api/users', {
+          const response = await customFetch('/api/users', {
             headers: {
               Authorization: `Bearer ${token}`
             }
