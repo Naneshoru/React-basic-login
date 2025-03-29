@@ -6,5 +6,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+    # volumes:
+    #   - ./nginx.conf:/etc/nginx/nginx.conf
