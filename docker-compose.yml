@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
    nginx:
     container_name: login-front
@@ -5,6 +7,8 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 80:80
+      - "80:80"
+      - "443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs/selfsigned.crt:/etc/nginx/certs/selfsigned.crt
+      - ./certs/selfsigned.key:/etc/nginx/certs/selfsigned.key
