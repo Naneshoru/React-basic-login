@@ -16,5 +16,7 @@ Shadcn <br>
 
 ---
 
-[![image](https://github.com/user-attachments/assets/b77023d5-910b-429b-a3ac-04e3d7ee372e)](https://atakiama-react-basic-login.netlify.app/)
+<a href="https://atakiama-react-basic-login.netlify.app/" target="_blank" rel="noopener noreferrer">
+  <img src="https://github.com/user-attachments/assets/b77023d5-910b-429b-a3ac-04e3d7ee372e" alt="image" />
+</a>
 Clique para ver em produção!
