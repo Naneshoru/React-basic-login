@@ -31,7 +31,7 @@
     "typescript": "^3.9.10",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "http://localhost",
+  "proxy": "http://localhost:3030",
   "scripts": {
     "start": "craco start",
     "build": "craco build",

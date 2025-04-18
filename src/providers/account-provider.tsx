@@ -59,7 +59,8 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
       return { token, refreshToken };
     }
     setIsLoggedIn(false)
-    throw Error('Erro no login');
+    const errorData = await response.json();
+    throw Error(errorData?.message || 'Erro ao fazer login');
   };
 
   const register = async (credentials: { name: string, email: string; password: string }) => {
@@ -76,7 +77,8 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
       const data = await response.json()
       return data
     }
-    throw Error('Erro no cadastro de usuário');
+    const errorData = await response.json();
+    throw Error(errorData?.message || 'Erro no cadastro de usuário');
   }
 
   const getAccount = async (): Promise<void> => {
