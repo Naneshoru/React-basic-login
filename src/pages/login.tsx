@@ -1,7 +1,9 @@
 import AccountContext from 'contexts/account-context';
 import { Button } from 'components/ui/button';
-import { Input } from 'components/ui/input';
 import React, { FormEvent, useContext, useState } from 'react';
+import PasswordInput from '../components/ui/input-password';
+import { Input } from 'components/ui/input';
+import { Mail } from 'lucide-react';
 
 export default function Login() {
   const { login } = useContext(AccountContext)
@@ -35,17 +37,31 @@ export default function Login() {
           </p>
 
           <form action="" className='flex flex-col gap-2 p-2' onSubmit={handleSubmit}>
-            <label className='flex flex-col gap-1'>
-              E-mail: 
-              <Input type="email" name="email" placeholder="email@provedor.com.br" value={credentials.email} onChange={handleChange} className='bg-gray-50' autoComplete="email" />
-            </label>
+            <Input
+              type="email"
+              name="email"
+              placeholder="email@provedor.com.br" 
+              value={credentials.email} 
+              onChange={handleChange} className='bg-gray-50' 
+              autoComplete="email"
+              label="E-mail:"
+              icon={<Mail size={20} />}
+            />
+            <PasswordInput 
+              type="password" 
+              name="password" 
+              placeholder='******' 
+              value={credentials.password} 
+              onChange={handleChange} className='bg-gray-50' 
+              label="Senha:"
+            />
 
-            <label className='flex flex-col gap-1'>
-              Senha: 
-              <Input type="password" name="password" placeholder='******' value={credentials.password} onChange={handleChange} className='bg-gray-50' />
-            </label>
-
-            <Button className='mt-4'>Entrar</Button>
+            <Button 
+              className='mt-4' 
+              disabled={credentials.password.length <= 6}
+            >
+              Entrar
+            </Button>
           </form>
         </div>
       </div>
