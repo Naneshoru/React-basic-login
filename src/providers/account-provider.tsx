@@ -1,5 +1,5 @@
 import React, { ReactNode, useCallback, useEffect, useState } from "react";
-import AccountContext from "contexts/account-context";
+import AccountContext from "@contexts/account-context";
 import { useNavigate } from "react-router-dom";
 
 type Props = {

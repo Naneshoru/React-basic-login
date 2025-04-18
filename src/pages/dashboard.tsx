@@ -1,5 +1,5 @@
-import { customFetch } from 'utils'
-import AccountContext from 'contexts/account-context'
+import { customFetch } from '@utils'
+import AccountContext from '@contexts/account-context'
 import React, { useContext, useEffect, useState } from 'react'
 
 export default function Dashboard() {

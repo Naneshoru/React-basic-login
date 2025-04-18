@@ -1,9 +1,10 @@
-import AccountContext from 'contexts/account-context';
-import { Button } from 'components/ui/button';
+import AccountContext from '@contexts/account-context';
+import { Button } from '@ui/button';
 import React, { FormEvent, useContext, useState } from 'react';
-import PasswordInput from '../components/ui/input-password';
-import { Input } from 'components/ui/input';
+import PasswordInput from '@ui/input-password';
+
 import { Mail } from 'lucide-react';
+import { Input } from '@components/ui/input';
 
 export default function Login() {
   const { login } = useContext(AccountContext)

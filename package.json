@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@radix-ui/react-slot": "^1.0.0",
     "@shadcn/ui": "^0.0.4",
     "@testing-library/jest-dom": "^5.16.2",
@@ -30,10 +31,11 @@
     "typescript": "^3.9.10",
     "web-vitals": "^2.1.4"
   },
+  "proxy": "http://localhost",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/index.css -o src/tailwind.output.css"
   },

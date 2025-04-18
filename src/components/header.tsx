@@ -1,4 +1,4 @@
-import AccountContext from 'contexts/account-context'
+import AccountContext from '@contexts/account-context'
 import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 

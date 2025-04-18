@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Lock, Unlock } from "lucide-react";
 import { Input } from "./input";
-import 'styles/input.css'
+import '@styles/input.css'
 
 const PasswordInput: React.FC<any> = ({ ...props }: any) => {
   const [isLocked, setIsLocked] = useState(true);
