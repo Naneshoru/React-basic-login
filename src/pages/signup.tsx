@@ -2,6 +2,8 @@ import AccountContext from '@contexts/account-context';
 import { Button } from '@components/ui/button';
 import { Input } from '@components/ui/input';
 import React, { FormEvent, useContext, useState } from 'react';
+import { Mail, User } from 'lucide-react';
+import PasswordInput from '../components/ui/input-password';
 
 export default function SignUp() {
   const { register } = useContext(AccountContext)
@@ -35,22 +37,42 @@ export default function SignUp() {
           </p>
 
           <form action="" className='flex flex-col gap-2 p-2' onSubmit={handleSubmit}>
-            <label className='flex flex-col gap-1'>
-              Nome: 
-              <Input name="name" placeholder="José da Silva" value={credentials.name} onChange={handleChange} className='bg-gray-50' autoComplete="name" />
-            </label>
+            <Input 
+              name="name" 
+              placeholder="José da Silva" 
+              value={credentials.name} 
+              onChange={handleChange} 
+              className='bg-gray-50' 
+              autoComplete="name"
+              label="Nome:"
+              icon={<User size={20} />}
+            />
 
-            <label className='flex flex-col gap-1'>
-              E-mail: 
-              <Input type="email" name="email" placeholder="email@provedor.com.br" value={credentials.email} onChange={handleChange} className='bg-gray-50'autoComplete="email" />
-            </label>
+            <Input
+              type="email"
+              name="email"
+              placeholder="email@provedor.com.br" 
+              value={credentials.email} 
+              onChange={handleChange} className='bg-gray-50' 
+              autoComplete="email"
+              label="E-mail:"
+              icon={<Mail size={20} />}
+            />
+            <PasswordInput 
+              type="password" 
+              name="password" 
+              placeholder='******' 
+              value={credentials.password} 
+              onChange={handleChange} className='bg-gray-50' 
+              label="Senha:"
+            />
 
-            <label className='flex flex-col gap-1'>
-              Senha: 
-              <Input type="password" name="password" placeholder='******' value={credentials.password} onChange={handleChange} className='bg-gray-50' />
-            </label>
-
-            <Button className='mt-4'>Cadastrar</Button>
+            <Button 
+              className='mt-4' 
+              disabled={credentials.password.length <= 6}
+            >
+              Entrar
+            </Button>
           </form>
         </div>
       </div>
