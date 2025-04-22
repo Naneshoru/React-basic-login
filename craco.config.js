@@ -3,6 +3,8 @@ var path = require("path");
 module.exports = {
   webpack: {
     alias: {
+      "react/jsx-runtime": "react/jsx-runtime.js",
+      "react/jsx-dev-runtime": "react/jsx-dev-runtime.js",
       "@": path.resolve(__dirname, "src/"),
       "@components": path.resolve(__dirname, "src/components/"),
       "@lib": path.resolve(__dirname, "src/lib/"),
