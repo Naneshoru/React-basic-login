@@ -15,7 +15,7 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
   
   const refreshTheToken = useCallback(async (refreshToken: string) => {
     setIsLoading(true)
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/refresh`, {
+    const response = await fetch(`/api/auth/refresh`, {
       method: 'POST',
       body: JSON.stringify({ refreshToken }),
       headers: {
@@ -40,7 +40,8 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
   }, [refreshTheToken])
 
   const login = async (credentials: { email: string; password: string }): Promise<any> => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+    console.log("[AccountProvider]", credentials)
+    const response = await fetch(`/api/auth/login`, {
       method: "POST",
       body: JSON.stringify(credentials),
       headers: {
@@ -59,12 +60,26 @@ const AccountProvider: React.FC<Props> = ({ children }) => {
       return { token, refreshToken };
     }
     setIsLoggedIn(false)
-    const errorData = await response.json();
-    throw Error(errorData?.message || 'Erro ao fazer login');
+    let errorMessage = 'Erro ao fazer login';
+  
+    const contentType = response.headers.get("content-type");
+    let body;
+    if (contentType && contentType.includes("application/json")) {
+      body = await response.json();
+      errorMessage = body?.message || errorMessage;
+    } else {
+      body = await response.text();
+      if (body.startsWith('Proxy error')) {
+        errorMessage = 'Proxy error: backend not reachable';
+      } else {
+        errorMessage = body;
+      }
+    }
+    throw Error(errorMessage);
   };
 
   const register = async (credentials: { name: string, email: string; password: string }) => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users`, {
+    const response = await fetch(`/api/users`, {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: {
