@@ -59,7 +59,7 @@ export default function Login() {
 
             <Button 
               className='mt-4' 
-              disabled={credentials.password.length <= 6}
+              disabled={credentials.password.length < 6}
             >
               Entrar
             </Button>
